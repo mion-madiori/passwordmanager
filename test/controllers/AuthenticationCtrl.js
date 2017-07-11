@@ -134,6 +134,9 @@ describe("login", () => {
             };
 
             const res = {
+                render: (view, data) => {
+                    expect(data.message).toBe('You are logged')
+                },
                 redirect: slug => {
                     expect(slug).toBe('/admin');
                 }
