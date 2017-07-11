@@ -1,8 +1,10 @@
 class AdminCtrl{
-    constructor(){}
+    constructor(AuthenticationService, PasswordService){}
 
     postAdd(req, res){
-        
+        res.render('', {
+            message: ''
+        })
     }
 }
 

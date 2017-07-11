@@ -79,5 +79,36 @@ describe('AdminCtrl', () => {
 
             adminCtrl.postAdd(req, res)
         });
+
+        it('should return error message if connexion to database is broken', () => {
+            const adminCtrl = new AdminCtrl({}, {
+                passwordModel: (login, password, url) => {
+                    expect(login).toBe('toto');
+                    expect(password).toBe('titi');
+                    expect(url).toBe('www.google.com');
+
+                    return new Promise((resolve, reject) => reject({
+                        message: 'error'
+                    }));
+                }
+            });
+
+            const req = {
+                body: {
+                    login: 'toto',
+                    password: 'titi',
+                    url: 'www.google.com'
+                }
+            };
+
+            const res = {
+                render: (view, data) => {
+                    expect(view).toBe('registration');
+                    expect(data.message).toBe('Unexpected error');
+                }
+            };
+
+            adminCtrl.postAdd(req, res);
+        });
     });
 });
