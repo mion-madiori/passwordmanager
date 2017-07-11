@@ -73,7 +73,7 @@ describe("AuthenticationCtrl", () => {
 
             const req = {
                 body: {
-                    email: 'test-email@gmail.com'
+                    email: 'incorrect-email@gmail.com'
                 }
             };
 
