@@ -16,11 +16,13 @@ class AuthenticationCtrl {
             res.render('/resetPassword', {
                 message: 'Email address required'
             });
+            return;
         }
         if(req.body.email === 'test-email@gmail.com') {
             res.render('/resetPassword', {
                password: 'p@ssword'
             });
+            return;
         }
     }
 
