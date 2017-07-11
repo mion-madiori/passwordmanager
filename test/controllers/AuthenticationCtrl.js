@@ -117,7 +117,7 @@ describe("login", () => {
             authenticationCtrl.login(req, res);
         });
 
-        it("Should redirect user when the user is logged", () => {
+        it("Should return a message when the user is logged", () => {
             const authenticationCtrl = new AuthenticationCtrl({}, {
                 login: () => {
                     return new Promise(resolve => resolve({
@@ -136,7 +136,29 @@ describe("login", () => {
             const res = {
                 render: (view, data) => {
                     expect(data.message).toBe('You are logged')
-                },
+                }
+            };
+
+            authenticationCtrl.login(req, res);
+        });
+
+        it("Should redirect user when the user is logged", () => {
+            const authenticationCtrl = new AuthenticationCtrl({}, {
+                login: () => {
+                    return new Promise(resolve => resolve({
+                        message: 'success'
+                    }))
+                }
+            });
+
+            const req = {
+                body: {
+                    email: 'john.doe@domain.tld',
+                    password: 'password'
+                }
+            };
+
+            const res = {
                 redirect: slug => {
                     expect(slug).toBe('/admin');
                 }
