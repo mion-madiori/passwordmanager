@@ -11,7 +11,7 @@ describe("login", () => {
         });
     });
 
-    describe("#authenticationAction", () => {
+    describe("#login", () => {
         it("Should return the value : 'authentication/login'", () => {
             const login = new AuthenticationCtrl();
 
@@ -23,11 +23,11 @@ describe("login", () => {
                 }
             };
 
-            login.loginAction(req, res);
+            login.login(req, res);
         });
     });
 
-    describe("#login", () => {
+    describe("#postlogin", () => {
         it("Should return an error message when the system crach", () => {
             const authenticationCtrl = new AuthenticationCtrl({}, {
                 login: (email, password) => {
@@ -54,7 +54,7 @@ describe("login", () => {
                 }
             };
 
-            authenticationCtrl.login(req, res);
+            authenticationCtrl.postlogin(req, res);
         });
 
         it("Should return an error message with empty post", () => {
@@ -70,7 +70,7 @@ describe("login", () => {
                 }
             };
 
-            authenticationCtrl.login(req, res);
+            authenticationCtrl.postlogin(req, res);
         });
 
         it("Should return an error message with an empty password", () => {
@@ -89,7 +89,7 @@ describe("login", () => {
                 }
             };
 
-            authenticationCtrl.login(req, res);
+            authenticationCtrl.postlogin(req, res);
         });
 
         it("Should return an error 'bad credentials' with a bad password", () => {
@@ -114,7 +114,7 @@ describe("login", () => {
                 }
             };
 
-            authenticationCtrl.login(req, res);
+            authenticationCtrl.postlogin(req, res);
         });
 
         it("Should return a message when the user is logged", () => {
@@ -139,7 +139,7 @@ describe("login", () => {
                 }
             };
 
-            authenticationCtrl.login(req, res);
+            authenticationCtrl.postlogin(req, res);
         });
 
         it("Should redirect user when the user is logged", () => {
@@ -164,7 +164,7 @@ describe("login", () => {
                 }
             };
 
-            authenticationCtrl.login(req, res);
+            authenticationCtrl.postlogin(req, res);
         });
     });
 });
