@@ -7,8 +7,8 @@ describe("AuthenticationCtrl", () => {
         it("Should check all properties", () => {
             const authenticationCtrl = new AuthenticationCtrl(true, true);
 
-            expect(AuthenticationCtrl._data).toBe(true);
-            expect(AuthenticationCtrl._userService).toBe(true);
+            expect(authenticationCtrl._data).toBe(true);
+            expect(authenticationCtrl._userService).toBe(true);
         });
     });
 
