@@ -32,6 +32,7 @@ class AuthenticationCtrl {
                 message: 'Incorrect email address'
             });
         }
+    }
 
     login(req, res) {
         res.render('authentication/login', this._data)
