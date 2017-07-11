@@ -6,11 +6,11 @@ class AuthenticationCtrl {
 
     }
 
-    loginAction(req, res) {
+    login(req, res) {
         res.render('', this._data)
     }
 
-    login(req, res) {
+    postlogin(req, res) {
         res.render('', {
             message: ''
         });
