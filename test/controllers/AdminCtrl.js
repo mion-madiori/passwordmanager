@@ -48,7 +48,7 @@ describe('AdminCtrl', () => {
             adminCtrl.postAdd(req, res)
         });
 
-        it('should return error message if body is empty (hacking)', () => {
+        it('should return error message if body is non-existent (hacking)', () => {
             const req = {
 
             }
