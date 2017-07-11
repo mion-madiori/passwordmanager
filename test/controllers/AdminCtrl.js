@@ -11,6 +11,13 @@ const expect = require("expect");
 const AdminCtrl = require("../../app/controllers/AdminCtrl");
 
 describe('AdminCtrl', () => {
+    describe("#constructor", () => {
+        it("Should check all properties", () => {
+            const adminCtrl = new AdminCtrl(true, true);
+
+            expect(adminCtrl._passwordService).toBe(true);
+        });
+    });
     describe('#postAdd', () => {
         let adminCtrl = new AdminCtrl();
 
@@ -18,14 +25,15 @@ describe('AdminCtrl', () => {
 
             const req = {
                 body:{
+                    url: 'http://www.draw.io',
+                    login: 'admin',
                     password: ''
                 }
             };
 
             const res = {
                 render: (view, data) => {
-                    expect(view).toBe('error');
-                    expect(data.message).toBe("Password field required");
+                    expect(data.message).toBe("All fields required");
                 }
             };
 
@@ -35,14 +43,15 @@ describe('AdminCtrl', () => {
         it('should return message of validation to adding password', () => {
             const req = {
                 body:{
+                    url: 'http://www.draw.io',
+                    login: 'admin',
                     password: 'mypass'
                 }
             };
 
             const res = {
                 render: (view, data) => {
-                    expect(view).toBe("ok");
-                    expect(data.message).toBe('password added')
+                    expect(data.message).toBe('Password added')
                 }
             };
 
@@ -56,8 +65,7 @@ describe('AdminCtrl', () => {
 
             const res = {
                 render: (view, data) => {
-                    expect(view).toBe("error");
-                    expect(data.message).toBe('Body is undefined');
+                    expect(data.message).toBe('All fields required');
                 }
             };
 
@@ -73,8 +81,7 @@ describe('AdminCtrl', () => {
 
             const res = {
                 render: (view, data) => {
-                    expect(view).toBe("error");
-                    expect(data.message).toBe("Password is undefined");
+                    expect(data.message).toBe("All fields required");
                 }
             };
 
@@ -83,7 +90,7 @@ describe('AdminCtrl', () => {
 
         it('should return error message if connexion to database is broken', () => {
             const adminCtrl = new AdminCtrl({}, {
-                passwordModel: (login, password, url) => {
+                postAdd: (login, password, url) => {
                     expect(login).toBe('toto');
                     expect(password).toBe('titi');
                     expect(url).toBe('www.google.com');
