@@ -50,12 +50,13 @@ describe("AuthenticationCtrl", () => {
         });
 
         it("Should return the password : 'p@ssword'", () => {
+            const authenticationCtrl = new AuthenticationCtrl({ });
 
-            const authenticationCtrl = new AuthenticationCtrl({
-                email: 'test-email@gmail.com'
-            });
-
-            const req = { };
+            const req = {
+                body: {
+                    email: 'test-email@gmail.com'
+                }
+            };
 
             const res = {
                 render: (view, data) => {
