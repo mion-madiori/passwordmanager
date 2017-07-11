@@ -1,6 +1,16 @@
 /**
  * Created by Marie on 10/07/2017.
  */
+
+/* Use case:
+ * Should check all properties
+ * Should return the value : 'registration'
+ * Should return a message to confirm registration
+ * Should return an error message with an empty password
+ * Should return an error message if an account already exists with this email
+ * Should return an error system that database is inaccessible
+ * 
+ */
 const expect = require('expect');
 const AuthenticationCtrl = require('../../app/controllers/AuthenticationCtrl');
 
