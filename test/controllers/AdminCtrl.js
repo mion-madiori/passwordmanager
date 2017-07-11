@@ -2,8 +2,9 @@
  * use case:
  * should return error message if field is empty
  * should return error message if field is undefined (hacking)
- * should return error message if body is empty (hacking)
+ * should return error message if body is non-existent (hacking)
  * should return message of validation to adding password
+ * should return error message if connexion to database is broken
  */
 
 const expect = require("expect");
