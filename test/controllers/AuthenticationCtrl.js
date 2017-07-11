@@ -31,7 +31,7 @@ describe("AuthenticationCtrl", () => {
             const req = {};
             const res = {
                 render: view => {
-                    expect(view).toBe('registration');
+                    expect(view).toBe('/registration');
                 }
             };
             authenticationCtrl.registration(req, res);
@@ -41,7 +41,13 @@ describe("AuthenticationCtrl", () => {
 
     describe("#postRegistration", () => {
         it("Should return a message to confirm registration", () => {
-            const authenticationCtrl = new AuthenticationCtrl({}, {});
+            const authenticationCtrl = new AuthenticationCtrl({}, {
+                login: (email, password) => {
+                    return new Promise(resolve => resolve({
+                        message: 'registration_ok'
+                    }))
+                }
+            });
 
             const req = {
                 body: {
@@ -52,6 +58,7 @@ describe("AuthenticationCtrl", () => {
 
             const res = {
                 render: (view, data) => {
+                    expect(view).toBe('/registration');
                     expect(data.message).toBe("Your registration is confirmed");
                 }
             };
@@ -78,7 +85,13 @@ describe("AuthenticationCtrl", () => {
         });
 
         it("Should return an error message if an account already exists with this email", () => {
-            const authenticationCtrl = new AuthenticationCtrl({}, {});
+            const authenticationCtrl = new AuthenticationCtrl({}, {
+                login: (email, password) => {
+                    return new Promise(resolve => resolve({
+                        message: 'email_already_exist'
+                    }))
+                }
+            });
 
             const req = {
                 body: {
@@ -114,7 +127,7 @@ describe("AuthenticationCtrl", () => {
 
             const res = {
                 render: (view, data) => {
-                    expect(view).toBe('registration');
+                    expect(view).toBe('/registration');
                     expect(data.message).toBe('Unexpected error');
                 }
             };
