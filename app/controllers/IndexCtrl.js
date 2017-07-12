@@ -7,10 +7,12 @@ class IndexCtrl{
         
     }
 
-    getRoute(){
-        return router.get('/', function(req, res, next) {
-            res.render('index', { title: 'Express' });
-        });
+    goToRoute(){
+        return router.get('/', this.toIndex);
+    }
+
+    toIndex(req, res){
+        res.render('index', { title: 'Express' });
     }
 }
 

@@ -16,8 +16,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const indexCtrl = new IndexCtrl()
-// app.use('/', indexRoutes)
-app.use('/', indexCtrl.getRoute())
+
+console.log(indexCtrl.goToRoute())
+app.use('/', indexCtrl.goToRoute())
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');

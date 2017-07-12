@@ -12,7 +12,7 @@ class UserModel{
     set email(email){this.email = email;}
     set password(password){this.password = password;}
     set lstPassword(lstPassword){this.lstPassword = lstPassword;}
-    set addPassword(password){this.lstPassword.push(password)}
+    set addPassword(password){this.lstPassword.push(password);}
 }
 
 module.exports = UserModel
