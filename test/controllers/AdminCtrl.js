@@ -167,9 +167,54 @@ describe('AdminCtrl', () => {
 
             adminCtrl.putAdd(req, res)
         });
-        
-        it('Should return an error message when one field or more is empty', () => {});
-        it('Should return an error message when the database is inaccessible', () => {});
+
+        it('Should return an error message when one field or more is empty', () => {
+            const req = {
+                body: {
+                    url: 'http://www.google.fr',
+                    login: '',
+                    password: 'veryStrongPassword'
+                }
+            };
+
+            const res = {
+                render: (view, data) => {
+                    expect(data.message).toBe("All fields are required");
+                }
+            };
+
+            adminCtrl.putAdd(req, res)
+        });
+
+        it('Should return an error message when the database is inaccessible', () => {
+            const adminCtrl = new AdminCtrl({}, {
+                putAdd: (login, password, url) => {
+                    expect(login).toBe('toto');
+                    expect(password).toBe('titi');
+                    expect(url).toBe('www.google.com');
+
+                    return new Promise((resolve, reject) => reject({
+                        message: 'error'
+                    }));
+                }
+            });
+
+            const req = {
+                body: {
+                    login: 'toto',
+                    password: 'titi',
+                    url: 'www.google.com'
+                }
+            };
+
+            const res = {
+                render: (view, data) => {
+                    expect(view).toBe('admin/listAdmin');
+                    expect(data.message).toBe('Unexpected error');
+                }
+            };
+            adminCtrl.putAdd(req, res);
+        });
     });
 
 });
