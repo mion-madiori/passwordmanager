@@ -26,11 +26,12 @@ describe('AdminCtrl', () => {
             expect(adminCtrl._passwordService).toBe(true);
         });
     });
+
     describe('#postAdd', () => {
-        let adminCtrl = new AdminCtrl();
+
 
         it('should return error message if field is empty', () => {
-
+            let adminCtrl = new AdminCtrl();
             const req = {
                 body:{
                     url: 'http://www.draw.io',
@@ -49,6 +50,14 @@ describe('AdminCtrl', () => {
         });
 
         it('should return message of validation to adding password', () => {
+            let adminCtrl = new AdminCtrl({
+                save: password => {
+                    return new Promise(resolve => {
+                        message: 'Password added'
+                    })
+                }
+            });
+
             const req = {
                 body:{
                     url: 'http://www.draw.io',
@@ -67,6 +76,7 @@ describe('AdminCtrl', () => {
         });
 
         it('should return error message if body is non-existent (hacking)', () => {
+            let adminCtrl = new AdminCtrl();
             const req = {
 
             };
@@ -81,6 +91,7 @@ describe('AdminCtrl', () => {
         });
 
         it('should return error message if field is undefined (hacking)', () => {
+            let adminCtrl = new AdminCtrl();
             const req = {
                 body: {
                     password: undefined
@@ -97,8 +108,8 @@ describe('AdminCtrl', () => {
         });
 
         it('should return error message if connexion to database is broken', () => {
-            const adminCtrl = new AdminCtrl({}, {
-                postAdd: (login, password, url) => {
+            const adminCtrl = new AdminCtrl({
+                save : (login, password, url) => {
                     expect(login).toBe('toto');
                     expect(password).toBe('titi');
                     expect(url).toBe('www.google.com');
@@ -119,7 +130,7 @@ describe('AdminCtrl', () => {
 
             const res = {
                 render: (view, data) => {
-                    expect(view).toBe('registration');
+                    expect(view).toBe('/admin');
                     expect(data.message).toBe('Unexpected error');
                 }
             };
