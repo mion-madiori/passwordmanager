@@ -1,0 +1,15 @@
+.button {
+    margin-left: 38%;
+    margin-top: 20%;
+}
+.fontHeader{
+    background-color: rgb(40, 138, 257);
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.textHeader{
+    color: white;
+}
+.formLogin{
+    margin-left: 27%;
+}

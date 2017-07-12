@@ -32,7 +32,6 @@ describe("AuthenticationCtrl", () => {
                 }
             };
             authenticationCtrl.logout(res);
-
         });
     });
 

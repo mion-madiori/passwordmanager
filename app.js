@@ -2,13 +2,13 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
-var indexRoutes = require('./routes/app.routes')
-const IndexCtrl = require('./app/controllers/IndexCtrl')
+var indexRoutes = require('./routes/app.routes');
+const IndexCtrl = require('./app/controllers/IndexCtrl');
 
-app.set('views', path.join(__dirname, 'app/views'))
+app.set('views', path.join(__dirname, 'app/views'));
 // app.use(express.static(__dirname + '/app/views'))
 
-app.set('view engine', "html")
+app.set('view engine', "html");
 
 app.use(express.static(path.join(__dirname, 'app/views')));
 

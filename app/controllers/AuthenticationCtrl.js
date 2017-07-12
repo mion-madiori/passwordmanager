@@ -101,7 +101,6 @@ class AuthenticationCtrl {
                 message: 'Unexpected error'
             });
         });
-
     }
 
     logout(res){
@@ -109,6 +108,6 @@ class AuthenticationCtrl {
             message: 'You are logout'
         });
     }
-
 }
+
 module.exports = AuthenticationCtrl;
