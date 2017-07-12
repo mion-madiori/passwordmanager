@@ -127,4 +127,32 @@ describe('AdminCtrl', () => {
             adminCtrl.postAdd(req, res);
         });
     });
+
+
+    describe("#putAdd", () => {
+        let adminCtrl = new AdminCtrl();
+
+        it('Should return a message to confirm password has been updated with success', () => {
+            const req = {
+                body:{
+                    url: 'http://www.draw.io',
+                    login: 'admin',
+                    password: 'myPassword'
+                }
+            };
+
+            const res = {
+                render: (view, data) => {
+                    expect(data.message).toBe("Password of this entry has been successfully updated");
+                }
+            };
+
+            adminCtrl.putAdd(req, res)
+        });
+
+        it('Should return a message to confirm data has been updated with success for this entry', () => {});
+        it('Should return an error message when one field or more is empty', () => {});
+        it('Should return an error message when the database is inaccessible', () => {});
+    });
+
 });

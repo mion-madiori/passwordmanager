@@ -31,6 +31,12 @@ class AdminCtrl{
             });
         });
     }
+
+    putAdd(req, res){
+        res.render('admin/listAdmin', {
+           message: ''
+        });
+    }
 }
 
 module.exports = AdminCtrl;
