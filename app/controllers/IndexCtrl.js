@@ -1,8 +1,16 @@
+var express = require('express');
+var router = express.Router();
 
 class IndexCtrl{
 
-    constructor(res, path){
-        res.redirect('/index')
+    constructor(){
+        
+    }
+
+    getRoute(){
+        return router.get('/', function(req, res, next) {
+            res.render('index', { title: 'Express' });
+        });
     }
 }
 
