@@ -104,5 +104,11 @@ class AuthenticationCtrl {
 
     }
 
+    logout(res){
+        res.render('/login', {
+            message: 'You are logout'
+        });
+    }
+
 }
 module.exports = AuthenticationCtrl;
