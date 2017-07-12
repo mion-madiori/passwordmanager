@@ -9,24 +9,24 @@ class AdminCtrl{
             || _.isEmpty(req.body.url)
             || _.isEmpty(req.body.login)
             || _.isEmpty(req.body.password)) {
-            res.render('admin/listAdmin', {
+            res.render('/admin', {
                 message: 'All fields required'
             });
             return;
         }
 
-        this._passwordService.postAdd(req.body.url, req.body.password, req.body.password).then(
+        this._passwordService.save(req.body.login, req.body.password, req.body.url).then(
             result => {
                 if(result.message === 'success') {
                     res.redirect('/admin');
                 } else {
-                    res.render('admin/listAdmin', {
+                    res.render('/admin', {
                         message: 'Bad credentials'
                     });
                 }
             }
         ).catch(e => {
-            res.render('admin/listAdmin', {
+            res.render('/admin', {
                 message: 'Unexpected error'
             });
         });
