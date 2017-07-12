@@ -1,10 +1,18 @@
 /**
  * use case:
+ * #postAdd
  * should return error message if field is empty
  * should return error message if field is undefined (hacking)
  * should return error message if body is non-existent (hacking)
  * should return message of validation to adding password
  * should return error message if connexion to database is broken
+ *
+ * #putAdd
+ *  Should return a message to confirm password has been updated with success
+ *  Should return a message to confirm data has been updated with success for this entry
+ *  Should return an error message when one field or more is empty
+ *  Should return an error message when the database is inaccessible
+ *
  */
 
 const expect = require("expect");
