@@ -27,6 +27,37 @@ class AdminCtrl{
             }
         ).catch(e => {
             res.render('/admin', {
+<<<<<<< HEAD
+=======
+                message: 'Unexpected error'
+            });
+        });
+    }
+
+    putAdd(req, res){
+        if(_.isEmpty(req.body)
+            || _.isEmpty(req.body.url)
+            || _.isEmpty(req.body.login)
+            || _.isEmpty(req.body.password)) {
+            res.render('/admin', {
+                message: 'All fields are required'
+            });
+            return;
+        }
+
+        this._passwordService.save(req.body.login, req.body.password, req.body.url).then(
+            result => {
+                if(result.message === 'success') {
+                    res.redirect('/admin');
+                } else {
+                    res.render('/admin', {
+                        message: 'Bad credentials'
+                    });
+                }
+            }
+        ).catch(e => {
+            res.render('/admin', {
+>>>>>>> feature/entry_modification_4.2
                 message: 'Unexpected error'
             });
         });

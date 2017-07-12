@@ -1,7 +1,7 @@
-const passwordService = require('../models/PasswordModel')
+const passwordService = require('../models/PasswordModel');
 
 class PasswordService{
     constructor(){}
 }
 
-module.exports = PasswordService
+module.exports = PasswordService;
