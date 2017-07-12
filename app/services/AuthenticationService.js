@@ -1,7 +1,14 @@
-const userModel = require('../models/UserModel')
+const userModel = require('../models/UserModel');
 
 class AuthenticationService{
-    constructor(){}
+
+    constructor(UserModel){}
+
+    registration(email, password){}
+
+    login(email, password){}
+
+    update(email, lastPassword, newPassword){}
 }
 
-module.exports = AuthenticationService
+module.exports = AuthenticationService;
