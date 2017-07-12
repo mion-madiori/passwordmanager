@@ -27,8 +27,6 @@ class AdminCtrl{
             }
         ).catch(e => {
             res.render('/admin', {
-<<<<<<< HEAD
-=======
                 message: 'Unexpected error'
             });
         });
@@ -57,7 +55,6 @@ class AdminCtrl{
             }
         ).catch(e => {
             res.render('/admin', {
->>>>>>> feature/entry_modification_4.2
                 message: 'Unexpected error'
             });
         });
