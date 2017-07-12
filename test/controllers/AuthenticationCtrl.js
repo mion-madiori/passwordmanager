@@ -22,6 +22,20 @@ describe("AuthenticationCtrl", () => {
         });
     });
 
+    describe("#logout", () => {
+        it("Should return a message when the user is logout",() => {
+            const authenticationCtrl = new AuthenticationCtrl({},{});
+
+            const res = {
+                render: (view, data) => {
+                    expect(data.message).toBe('You are logout');
+                }
+            };
+            authenticationCtrl.logout(res);
+
+        });
+    });
+
     describe("#forgotPassword", () => {
 
         it("Should redirect user when the 'forgot my password' button is pressed", () => {
